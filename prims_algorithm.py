@@ -12,8 +12,7 @@ def prims(graph,start,previous,distance,is_visited):
         if not is_visited[n]:
             is_visited[n] = 1
             for cd,cn in graph[n]:
-                if distance[cn] > cd:
-                    print(distance[cn])
+                if distance[cn] > cd and not is_visited[cn]:
                     previous[cn] = n
                     distance[cn] = cd
                     heappush(bucket,[cd,cn])
@@ -65,9 +64,12 @@ for start,end,dist in input:
 start = 'a'
 prims(graph,start,previous,distance,is_visited)
 
-print(OrderedDict(sorted(is_visited.items())))
-print(OrderedDict(sorted(distance.items())))
-print(OrderedDict(sorted(previous.items())))
+print("Visited List:")
+print(sorted(is_visited.items()))
+print("Distance:")
+print(sorted(distance.items()))
+print("Parent:")
+print(sorted(previous.items()))
 
 
 
