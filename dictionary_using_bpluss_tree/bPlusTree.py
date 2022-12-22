@@ -1,7 +1,4 @@
 import math
-
-import csv
-
 import pandas as pd
 
 # Node creation
@@ -151,18 +148,9 @@ def printTree(tree):
 
 record_len = 100
 bplustree = BplusTree(record_len)
-# k = 1
-# file = open("bangla_dict.txt","rb").read().splitlines()
-# file = iter(file)
-# count = 0
-# for line in file:
-# 	count += 1
-# 	print("Line{}: {}".format(count, line.strip()))
-	# print(line)
-	# bplustree.insert(str(line), line.next())
-	# k = k+2
 
-df = pd.read_excel(r'bl.xlsx')
+
+df = pd.read_excel(r'dictionary_using_bpluss_tree/corpas.xlsx')
 for index, row in df.iterrows():
 	bplustree.insert(row["english"], row["bangla"])
 

@@ -3,7 +3,7 @@ import pandas as pd
 
 col_names = ['fixed acidity','volatile acidity','citric acid','residual sugar','chlorides','free sulfur dioxide','total sulfur dioxide','density','pH','sulphates','alcohol','quality']
 
-data = pd.read_csv("dataset.csv",header=None, names=col_names)
+data = pd.read_csv("decision_tree/dataset.csv",header=None, names=col_names)
 
 class Node():
     def __init__(self, feature_index=None, threshold=None, left=None, right=None, info_gain=None, value=None):
@@ -17,7 +17,6 @@ class Node():
 
 class DecisionTreeClassifier():
     def __init__(self, min_samples_split=2, max_depth=2):
-        ''' constructor '''
         
         # initialize the root of the tree 
         self.root = None
@@ -27,7 +26,7 @@ class DecisionTreeClassifier():
         self.max_depth = max_depth
         
     def build_tree(self, dataset, curr_depth=0):
-        ''' recursive function to build the tree ''' 
+        # ''' recursive function to build the tree ''' 
         
         X, Y = dataset[:,:-1], dataset[:,-1]
         num_samples, num_features = np.shape(X)
@@ -173,7 +172,7 @@ Y = data.iloc[:, -1].values.reshape(-1,1)
 from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=.2, random_state=41)
 
-classifier = DecisionTreeClassifier(min_samples_split=3, max_depth=3)
+classifier = DecisionTreeClassifier(min_samples_split=2, max_depth=3)
 classifier.fit(X_train,Y_train)
 classifier.print_tree()
 

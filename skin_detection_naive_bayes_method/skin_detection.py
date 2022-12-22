@@ -2,8 +2,8 @@ import cv2
 from collections import Counter
 import ast
 
-org_img = cv2.imread('org.jpg', 1)
-mask = cv2.imread('mask.jpg', 1)
+org_img = cv2.imread('skin_detection_naive_bayes_method/org.jpg', 1)
+mask = cv2.imread('skin_detection_naive_bayes_method/mask.jpg', 1)
 
 m_height, m_width, m_depth = mask.shape
 
